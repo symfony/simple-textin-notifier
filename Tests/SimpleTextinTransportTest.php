@@ -60,7 +60,7 @@ final class SimpleTextinTransportTest extends TransportTestCase
         $response->expects(self::exactly(2))->method('getStatusCode')->willReturn(201);
         $response->expects(self::once())->method('getContent')->willReturn(json_encode(['id' => 'foo']));
 
-        $client = new MockHttpClient(function (string $method, string $url) use ($response): ResponseInterface {
+        $client = new MockHttpClient(static function (string $method, string $url) use ($response): ResponseInterface {
             self::assertSame('POST', $method);
             self::assertSame('https://api-app2.simpletexting.com/v2/api/messages', $url);
 
