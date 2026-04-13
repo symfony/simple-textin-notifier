@@ -60,7 +60,7 @@ final class SimpleTextinTransportTest extends TransportTestCase
     {
         $message = new SmsMessage('+33612345678', 'Hello!');
 
-        $client = new MockHttpClient(function (string $method, string $url): ResponseInterface {
+        $client = new MockHttpClient(static function (string $method, string $url): ResponseInterface {
             self::assertSame('POST', $method);
             self::assertSame('https://api-app2.simpletexting.com/v2/api/messages', $url);
 
